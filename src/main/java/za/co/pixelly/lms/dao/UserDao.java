@@ -63,6 +63,7 @@ public class UserDao {
 
         try (Connection conn = DatabaseConfig.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    
             pstmt.setInt(1, id);
 
             try (ResultSet rs = pstmt.executeQuery()) {

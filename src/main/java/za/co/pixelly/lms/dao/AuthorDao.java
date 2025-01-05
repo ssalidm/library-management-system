@@ -47,4 +47,64 @@ public class AuthorDao {
         }
         return authors;
     }
+
+    public Author getAuthorById(int authorId) {
+        Author author = null;
+        String sql = "SELECT * FROM authors WHERE id = ?";
+
+        try (Connection conn = DatabaseConfig.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, authorId);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    int id = rs.getInt("id");
+                    String name = rs.getString("name");
+                    author = new Author(id, name);
+                }
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error fetching author: {0}", e.getMessage());
+        }
+
+        return author;
+    }
+
+    public boolean updateAuthor(int authorId, Author updatedAuthor) {
+        boolean isUpdated = false;
+        String sql = "UPDATE authors SET name = ? WHERE id = ?";
+
+        try (Connection conn = DatabaseConfig.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, updatedAuthor.name());
+            pstmt.setInt(2, authorId);
+
+            int affectedRows = pstmt.executeUpdate();
+            isUpdated = affectedRows > 0;
+
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error updating author: {0}", e.getMessage());
+        }
+
+        return isUpdated;
+    }
+
+    public boolean deleteAuthor(int authorId) {
+        boolean isDeleted = false;
+        String sql = "DELETE FROM authors WHERE id = ?";
+
+        try (Connection conn = DatabaseConfig.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, authorId);
+            isDeleted = pstmt.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error deleting author: {0}", e.getMessage());
+        }
+        return isDeleted;
+    }
 }

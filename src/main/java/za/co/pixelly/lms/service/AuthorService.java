@@ -12,15 +12,18 @@ public class AuthorService {
         this.authorDao = new AuthorDao();
     }
 
-    @SuppressWarnings("unused")
-    private void saveAuthor(String name) {
+    public void saveAuthor(String name) {
         Author author = new Author(name);
         authorDao.saveAuthor(author);
-        System.out.println("Author added successfully.");
+        System.out.println("Author '" + name + "' saved successfully!.");
     }
 
     public List<Author> getAllAuthors() {
         return authorDao.getAllAuthors();
+    }
+
+    public Author getAuthorById(int id) {
+        return authorDao.getAuthorById(id);
     }
 
 }
