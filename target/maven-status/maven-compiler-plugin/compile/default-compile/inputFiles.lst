@@ -1,0 +1,10 @@
+/home/dssali/java-tuts/library-management-system/src/main/java/za/co/pixelly/jdbc/DatabaseInitializer.java
+/home/dssali/java-tuts/library-management-system/src/main/java/za/co/pixelly/jdbc/config/DatabaseConfig.java
+/home/dssali/java-tuts/library-management-system/src/main/java/za/co/pixelly/lms/Main.java
+/home/dssali/java-tuts/library-management-system/src/main/java/za/co/pixelly/lms/dao/AuthorDao.java
+/home/dssali/java-tuts/library-management-system/src/main/java/za/co/pixelly/lms/dao/BookDao.java
+/home/dssali/java-tuts/library-management-system/src/main/java/za/co/pixelly/lms/dao/PublisherDao.java
+/home/dssali/java-tuts/library-management-system/src/main/java/za/co/pixelly/lms/dao/UserDao.java
+/home/dssali/java-tuts/library-management-system/src/main/java/za/co/pixelly/lms/model/Author.java
+/home/dssali/java-tuts/library-management-system/src/main/java/za/co/pixelly/lms/model/User.java
+/home/dssali/java-tuts/library-management-system/src/main/java/za/co/pixelly/lms/service/AuthorService.java

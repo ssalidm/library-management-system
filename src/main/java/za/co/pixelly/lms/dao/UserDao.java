@@ -11,26 +11,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import za.co.pixelly.lms.config.DatabaseConfig;
+import za.co.pixelly.jdbc.config.DatabaseConfig;
 import za.co.pixelly.lms.model.User;
 
 public class UserDao {
     private static final Logger logger = Logger.getLogger(UserDao.class.getName());
-
-    public void createTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS users (" +
-                "id INT AUTO_INCREMENT PRIMARY KEY, " +
-                "first_name VARCHAR(100) NOT NULL, " +
-                "last_name VARCHAR(100) NOT NULL, " +
-                "email VARCHAR(100) UNIQUE NOT NULL);";
-
-        try (Connection conn = DatabaseConfig.getConnection();
-                Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error creating table: {0}", e.getMessage());
-        }
-    }
 
     public void saveUser(User user) {
         String sql = "INSERT INTO users (first_name, last_name, email) VALUES (?, ?, ?)";
@@ -51,7 +36,7 @@ public class UserDao {
         }
     }
 
-    public List<User> getAllUsers() {
+    public List<User> getAllUsers() throws Exception {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users";
 
@@ -73,7 +58,7 @@ public class UserDao {
         return users;
     }
 
-    public User getUserById(int id) {
+    public User getUserById(int id) throws Exception {
         String sql = "SELECT * FROM users WHERE id = ?";
 
         try (Connection conn = DatabaseConfig.getConnection();

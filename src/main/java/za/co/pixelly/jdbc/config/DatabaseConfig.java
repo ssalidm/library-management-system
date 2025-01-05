@@ -1,4 +1,4 @@
-package za.co.pixelly.lms.config;
+package za.co.pixelly.jdbc.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

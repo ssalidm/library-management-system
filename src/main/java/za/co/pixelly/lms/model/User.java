@@ -9,13 +9,15 @@ public class User {
     private String lastName;
     private String email;
 
-    public User(String firstName, String lastName, String email) {
+    public User(String firstName, String lastName, String email) throws Exception {
+        validateName(email);
+        validateEmail(email);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    public User(int id, String firstName, String lastName, String email) {
+    public User(int id, String firstName, String lastName, String email) throws Exception {
         this(firstName, lastName, email);
         this.id = id;
     }
@@ -73,6 +75,14 @@ public class User {
                 ", lastName='" + getLastName() + "'" +
                 ", email='" + getEmail() + "'" +
                 "}";
+    }
+
+    private static void validateName(String name) throws Exception {
+        if (name.isEmpty()) throw new Exception("First Name and Last Name cannot be empty.");
+    }
+    
+    private static void validateEmail(String email) throws Exception {
+        if (email.isEmpty()) throw new Exception("Email cannot be empty.");
     }
 
 }
