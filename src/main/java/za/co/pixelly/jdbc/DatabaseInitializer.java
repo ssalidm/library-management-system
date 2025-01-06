@@ -50,7 +50,7 @@ public class DatabaseInitializer {
                     "user_id INT NOT NULL, " +
                     "book_copy_id INT NOT NULL, " +
                     "borrow_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
-                    "return_date TIMESTAMP, " +
+                    "return_date TIMESTAMP NULL, " +
                     "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE, " +
                     "FOREIGN KEY (book_copy_id) REFERENCES book_copies(id) ON DELETE CASCADE);";
 

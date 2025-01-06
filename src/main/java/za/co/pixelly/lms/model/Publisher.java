@@ -1,14 +1,14 @@
 package za.co.pixelly.lms.model;
 
-public class Author {
+public class Publisher {
     private int id;
     private String name;
 
-    public Author(String name) {
+    public Publisher(String name) {
         this.name = name;
     }
 
-    public Author(int id, String name) {
+    public Publisher(int id, String name) {
         this(name);
         this.id = id;
     }
@@ -27,7 +27,7 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author {" +
+        return "Publisher {" +
                 " id='" + id() + "'," +
                 " name='" + name() + "'" +
                 " }";
